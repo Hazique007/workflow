@@ -8,7 +8,6 @@ import {useForm} from "react-hook-form";
 import { toast } from "sonner";
 import {z} from "zod";
 import { Button } from "@/components/ui/button";
-
 import {
     Card,CardContent,CardDescription,CardHeader,CardTitle
 } from "@/components/ui/card"
@@ -80,11 +79,18 @@ export function LoginForm(){
 
                     <div className="grid gap-6">
                         <div className="flex flex-col gap-4">
+
                             <Button variant="outline"
                             className="w-full"
                             type="button"
                             disabled={isPending}
                             >
+                                <Image
+                                alt="Github"
+                                width={20} height={20}
+                                src="/logos/github.svg"
+                                
+                                />
                                 Continue with GitHub
 
                             </Button>
@@ -93,6 +99,12 @@ export function LoginForm(){
                             type="button"
                             disabled={isPending}
                             >
+                                <Image
+                                alt="Google"
+                                src="/logos/google.svg"
+                                width={20} height={20}
+                                
+                                />
                                 Continue with Google
 
                             </Button>
