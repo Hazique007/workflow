@@ -2,13 +2,12 @@
 
 import { Button } from "@/components/ui/button"
 import { authClient } from "@/lib/auth-client"
-import { useRouter } from "next/router"
+import { useRouter } from "next/navigation"
 
 export const LogoutButton =()=>{
     const router = useRouter() 
     return(
         <Button
-        variant="outline"
         onClick={()=>authClient.signOut({
             fetchOptions:{
                 onSuccess:()=>{
