@@ -28,6 +28,14 @@ const create = useMutation(trpc.createWorkflow.mutationOptions(
   }
 ))
 
+const testai = useMutation(trpc.testAi.mutationOptions({
+   onSuccess :()=>{
+     toast.success("AI agent queued")
+      
+    }
+
+}))
+
  
 
 
@@ -41,6 +49,12 @@ const create = useMutation(trpc.createWorkflow.mutationOptions(
     <div>
       {JSON.stringify(data, null, 2)}
     </div>
+    <Button 
+    disabled={testai.isPending}
+    onClick={()=>testai.mutate()}
+    >
+      Test Ai
+    </Button>
     <Button
     disabled={create.isPending}
     onClick={()=>create.mutate()}
