@@ -5,9 +5,13 @@ import { email } from 'zod';
 
 import {google} from "@ai-sdk/google"
 import {generateText} from "ai"
+import { TRPCError } from '@trpc/server';
 export const appRouter = createTRPCRouter({
 
   testAi:baseProcedure.mutation(async()=>{
+    
+
+
    await inngest.send({
     name:"execute/ai"});
 

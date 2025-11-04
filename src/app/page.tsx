@@ -32,6 +32,11 @@ const testai = useMutation(trpc.testAi.mutationOptions({
    onSuccess :()=>{
      toast.success("AI agent queued")
       
+    },
+
+    onError:(error)=>{
+
+      toast.error(`Error: ${error.message}`)
     }
 
 }))
