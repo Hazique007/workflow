@@ -24,7 +24,9 @@ import {
     SidebarMenuItem
 
 } from "@/components/ui/sidebar"
+import { useHasActiveSubscription } from "@/features/subscriptions/hooks/use-subscription"
 import { authClient } from "@/lib/auth-client"
+import { sl } from "date-fns/locale"
 
 const menuItems = [
     {
@@ -64,6 +66,7 @@ export const AppSidebar = () => {
 
     const router = useRouter()
     const pathname = usePathname()
+    const { HasActiveSubscription,isLoading } = useHasActiveSubscription()
 
     return (
         <Sidebar collapsible="icon">
@@ -128,11 +131,16 @@ export const AppSidebar = () => {
 
              <SidebarFooter>
                             <SidebarMenu>
+                                {!HasActiveSubscription && !isLoading&&(
+
+                               
                                 <SidebarMenuItem>
                                     <SidebarMenuButton
                                     tooltip="Upgrade to Pro"
                                     className="gap-x-4 h-10 px-4"
-                                    onClick={()=>{}}
+                                    onClick={()=>authClient.checkout({
+                                        slug:"Nodes-Pro"
+                                    })}
                                     
                                     >
                                         <StarIcon className=" h-4 w-4" />
@@ -141,11 +149,13 @@ export const AppSidebar = () => {
                                     </SidebarMenuButton>
                                 </SidebarMenuItem>
 
+                                 )}
+
                                  <SidebarMenuItem>
                                     <SidebarMenuButton
                                     tooltip="Billing Portal"
                                     className="gap-x-4 h-10 px-4"
-                                    onClick={()=>{}}
+                                    onClick={()=>authClient.customer.portal()}
                                     
                                     >
                                         <CreditCardIcon className=" h-4 w-4" />
